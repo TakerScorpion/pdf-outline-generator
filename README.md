@@ -41,3 +41,8 @@ Auto-Level Indentation: Automatically detect bookmark depth based on text indent
 Page Number Stripping: Automatically clean up raw trailing page numbers from text lines.
 
 File Optimization: Apply PyMuPDF garbage collection (garbage=3) and stream compression (deflate=True) on file export.
+
+```bash
+# instail PyMuPDF pack
+pip install PyMuPDF
+```
