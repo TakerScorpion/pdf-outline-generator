@@ -122,4 +122,5 @@ CONFIG = {
 ```
 
 📄 License
+
 MIT License
