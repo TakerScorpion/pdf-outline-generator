@@ -43,6 +43,6 @@ Page Number Stripping: Automatically clean up raw trailing page numbers from tex
 File Optimization: Apply PyMuPDF garbage collection (garbage=3) and stream compression (deflate=True) on file export.
 
 ```bash
-# instail PyMuPDF pack
+# instail PyMuPDF package
 pip install PyMuPDF
 ```
