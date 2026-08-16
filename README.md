@@ -27,6 +27,37 @@
 pip install PyMuPDF
 ```
 
+📝 TXT 目录格式规范
+TXT 目录文件需使用空格缩进表达书签层级（默认每 4 个空格代表增加一级层级）：
+
+第一章 基础入门 1
+    1.1 环境搭建 5
+        1.1.1 安装 Python 6
+    1.2 快速开始 12
+第二章 高级进阶 25
+    2.1 性能优化 30
+
+🚀使用方法
+修改脚本中的 CONFIG 配置项后直接运行：
+
+import fitz  # 导入 PyMuPDF 模块
+import os    # 导入操作系统路径处理模块
+
+# 自动化配置项
+CONFIG = {
+    # 待处理的原始 PDF 文件路径
+    "INPUT_PDF": r"C:\Users\YourName\Desktop\input.pdf",
+
+    # 存放校对好的 TXT 目录文件路径
+    "TOC_TXT": r"C:\Users\YourName\Desktop\toc.txt",
+
+    # 处理完成后的输出 PDF 文件路径
+    "OUTPUT_PDF": r"C:\Users\YourName\Desktop\output.pdf",
+
+    # 逻辑开关：是否清空原 PDF 中自带的旧书签
+    "CLEAN_OLD": True,
+}
+
 <a name="English"></a>
 📖 Introduction
 When dealing with scanned PDFs or ebooks with missing/corrupted bookmarks, manually adding a full table of contents (TOC) is tedious. This project is a lightweight Python automation tool built on PyMuPDF (fitz).
@@ -42,7 +73,43 @@ Page Number Stripping: Automatically clean up raw trailing page numbers from tex
 
 File Optimization: Apply PyMuPDF garbage collection (garbage=3) and stream compression (deflate=True) on file export.
 
+🛠️ Requirements & Installation
+Install PyMuPDF via pip:
+
 ```bash
-# instail PyMuPDF package
+# Install PyMuPDF library
 pip install PyMuPDF
 ```
+📝 TXT TOC Format Specification
+Structure your TXT file using leading space indentation (4 spaces per sub-level):
+
+Chapter 1 Introduction 1
+    1.1 Setup 5
+        1.1.1 Python Installation 6
+    1.2 Getting Started 12
+Chapter 2 Advanced Topics 25
+    2.1 Performance Tuning 30
+
+🚀 Usage
+Update the CONFIG dictionary in the script and execute:
+
+import fitz  # Import PyMuPDF library
+import os    # Import OS path module
+
+# Automation Configuration
+CONFIG = {
+    # Path to the source PDF file
+    "INPUT_PDF": r"C:\Users\YourName\Desktop\input.pdf",
+
+    # Path to the formatted plain-text TOC file
+    "TOC_TXT": r"C:\Users\YourName\Desktop\toc.txt",
+
+    # Path for saving the injected output PDF
+    "OUTPUT_PDF": r"C:\Users\YourName\Desktop\output.pdf",
+
+    # Flag: Whether to wipe old/corrupted bookmarks
+    "CLEAN_OLD": True,
+}
+
+📄 License
+MIT License
