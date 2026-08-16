@@ -25,3 +25,19 @@
 ```bash
 # 安装 PyMuPDF 依赖库
 pip install PyMuPDF
+```
+
+<a name="English"></a>
+📖 Introduction
+When dealing with scanned PDFs or ebooks with missing/corrupted bookmarks, manually adding a full table of contents (TOC) is tedious. This project is a lightweight Python automation tool built on PyMuPDF (fitz).
+
+It parses indented plain-text (TXT) TOC files, injects structured multi-level bookmark skeletons into the PDF, and unifies initial target pages to streamline post-processing (e.g., aligning actual page numbers using Adobe Acrobat or mouse macros).
+
+✨ Features
+Purge Corrupted TOC: Cleanly wipe existing, broken, or corrupted bookmarks from the source PDF.
+
+Auto-Level Indentation: Automatically detect bookmark depth based on text indentation (default: 4 spaces per level).
+
+Page Number Stripping: Automatically clean up raw trailing page numbers from text lines.
+
+File Optimization: Apply PyMuPDF garbage collection (garbage=3) and stream compression (deflate=True) on file export.
