@@ -31,12 +31,12 @@ pip install PyMuPDF
 TXT 目录文件需使用空格缩进表达书签层级（默认每 4 个空格代表增加一级层级）：
 
 ```Plaintext
-第一章 基础入门 1
-    1.1 环境搭建 5
-        1.1.1 安装 Python 6
-    1.2 快速开始 12
-第二章 高级进阶 25
-    2.1 性能优化 30
+第一章 基础入门
+    1.1 环境搭建
+        1.1.1 安装 Python
+    1.2 快速开始
+第二章 高级进阶
+    2.1 性能优化
 ```
 
 🚀使用方法
@@ -88,12 +88,12 @@ pip install PyMuPDF
 Structure your TXT file using leading space indentation (4 spaces per sub-level):
 
 ```Plaintext
-Chapter 1 Introduction 1
-    1.1 Setup 5
-        1.1.1 Python Installation 6
-    1.2 Getting Started 12
-Chapter 2 Advanced Topics 25
-    2.1 Performance Tuning 30
+Chapter 1 Introduction
+    1.1 Setup
+        1.1.1 Python Installation
+    1.2 Getting Started
+Chapter 2 Advanced Topics
+    2.1 Performance Tuning
 ```
 
 🚀 Usage
