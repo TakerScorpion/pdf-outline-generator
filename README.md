@@ -63,7 +63,10 @@ CONFIG = {
 ```
 
 <a name="English"></a>
+
+##English
 📖 Introduction
+
 When dealing with scanned PDFs or ebooks with missing/corrupted bookmarks, manually adding a full table of contents (TOC) is tedious. This project is a lightweight Python automation tool built on PyMuPDF (fitz).
 
 It parses indented plain-text (TXT) TOC files, injects structured multi-level bookmark skeletons into the PDF, and unifies initial target pages to streamline post-processing (e.g., aligning actual page numbers using Adobe Acrobat or mouse macros).
