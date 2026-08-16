@@ -5,14 +5,14 @@ import os
 #                   自动化配置项
 # ================================================= =
 CONFIG = {
-    # 待处理的原始 PDF 路径
-    "INPUT_PDF": r"C:\Users\Taker\Desktop\计算机网络教程.pdf",
+    # 待处理的原始 PDF 文件路径
+    "INPUT_PDF": r"C:\Users\YourName\Desktop\input.pdf",
 
-    # 存放校对好目录的 TXT 路径
-    "TOC_TXT": r"C:\Users\Taker\Desktop\计算机网络教程.txt",
+    # 存放校对好的 TXT 目录文件路径
+    "TOC_TXT": r"C:\Users\YourName\Desktop\toc.txt",
 
-    # 输出结果的路径（建议先放桌面，避开权限问题）
-    "OUTPUT_PDF": r"C:\Users\Taker\Desktop\待对齐_计算机网络教程.pdf",
+    # 处理完成后的输出 PDF 文件路径
+    "OUTPUT_PDF": r"C:\Users\YourName\Desktop\output.pdf",
 
     # 逻辑开关
     "CLEAN_OLD": True,  # 是否清除原书自带的乱码书签
