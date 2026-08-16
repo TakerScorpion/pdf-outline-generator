@@ -1,0 +1,76 @@
+import fitz  # PyMuPDF
+import os
+
+# ================================================= =
+#                   自动化配置项
+# ================================================= =
+CONFIG = {
+    # 待处理的原始 PDF 路径
+    "INPUT_PDF": r"C:\Users\Taker\Desktop\计算机网络教程.pdf",
+
+    # 存放校对好目录的 TXT 路径
+    "TOC_TXT": r"C:\Users\Taker\Desktop\计算机网络教程.txt",
+
+    # 输出结果的路径（建议先放桌面，避开权限问题）
+    "OUTPUT_PDF": r"C:\Users\Taker\Desktop\待对齐_计算机网络教程.pdf",
+
+    # 逻辑开关
+    "CLEAN_OLD": True,  # 是否清除原书自带的乱码书签
+}
+
+
+# ================================================= =
+
+def build_factory_skeleton():
+    # 1. 路径检查
+    if not os.path.exists(CONFIG["INPUT_PDF"]):
+        print(f"❌ 错误：找不到原始PDF -> {CONFIG['INPUT_PDF']}")
+        return
+    if not os.path.exists(CONFIG["TOC_TXT"]):
+        print(f"❌ 错误：找不到目录TXT -> {CONFIG['TOC_TXT']}")
+        return
+
+    print(f"🚀 开始处理: {os.path.basename(CONFIG['INPUT_PDF'])}")
+
+    try:
+        doc = fitz.open(CONFIG["INPUT_PDF"])
+
+        # 2. 清理旧数据
+        if CONFIG["CLEAN_OLD"]:
+            doc.set_toc([])
+            print("  - 已清空旧书签")
+
+        # 3. 解析 TXT 构造新骨架
+        new_toc = []
+        with open(CONFIG["TOC_TXT"], 'r', encoding='utf-8') as f:
+            for line in f:
+                content = line.strip()
+                if not content: continue
+
+                # 计算缩进层级 (每4个空格一级)
+                indent = len(line) - len(line.lstrip())
+                level = (indent // 4) + 1
+
+                # 提取标题（自动剥离末尾数字）
+                parts = content.rsplit(' ', 1)
+                title = parts[0] if parts[-1].isdigit() else content
+
+                # 初始页码统一设为 1，方便你用宏去“物理定位”
+                new_toc.append([level, title, 1])
+
+        # 4. 注入并执行深度保存
+        doc.set_toc(new_toc)
+        # garbage=3 会清理掉 PDF 内部的垃圾对象，deflate=True 开启压缩
+        doc.save(CONFIG["OUTPUT_PDF"], garbage=3, deflate=True)
+        doc.close()
+
+        print(f"✅ 成功！生成骨架文件: {CONFIG['OUTPUT_PDF']}")
+        print(f"📊 总计注入项: {len(new_toc)} 条")
+        print("\n[提示] 现在你可以用 Adobe 打开它，开启你的鼠标宏进行对齐了。")
+
+    except Exception as e:
+        print(f"💥 运行中发生崩溃: {e}")
+
+
+if __name__ == "__main__":
+    build_factory_skeleton()
